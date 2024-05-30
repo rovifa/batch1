@@ -1,7 +1,13 @@
-import { createBatch1 } from "./repositories/batch1.js";
+import express from 'express';
+import batchRoute from './router/batch1.js'
 
-let hasilInsert = await createBatch1("Rovi","Laki");
-console.log(hasilInsert);
-console.log(hasilInsert);
-//test123213213
-// udapte transfer
+const app = express();
+const port = 8080
+
+app.use(express.json());
+
+app.use('/batch', batchRoute);
+
+app.listen(port, () =>{
+    console.log("server running di port ",port)
+})
